@@ -1,36 +1,51 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gather Sports | 浜松のスポーツコミュニティ</title>
+    <link rel="icon" href="S__202293317.jpg">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
+
 <body>
 
-    <header>
-        <h1><a href="index.html">Gather <span>Sports</span></a></h1>
-        <button id="hamburger-btn" class="hamburger-btn" aria-label="メニューを開閉する">
-            <span></span><span></span><span></span>
-        </button>
-        <nav id="global-nav">
-            <ul>
-                <li><a href="index.html">HOME</a></li>
-                <li><a href="about.html">ABOUT</a></li>
-                <li><a href="activities.html">ACTIVITIES</a></li>
-                <li><a href="contact.html">CONTACT</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header>
+    <h1>
+        <a href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+            
+            <img src="S__202350623_0.jpg" alt="Gather Sports Logo" style="width: 50px; height: 50px; border-radius: 12px; object-fit: cover;">
+            
+            <span>Gather <span style="color: var(--primary-color);">Sports</span></span>
+        </a>
+    </h1>
+
+    <button id="hamburger-btn" class="hamburger-btn" aria-label="メニューを開閉する">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <nav id="global-nav">
+        <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+            <li><a href="activities.html">ACTIVITIES</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+        </ul>
+    </nav>
+</header>
 
     <main>
         <section class="hero">
             <div class="hero-content">
                 <span class="hero-subtitle">浜松スポーツコミュニティ</span>
                 <h2>“人”と“浜松の魅力”を<br><span class="text-gradient">スポーツで繋ぐ</span></h2>
-                <p class="hero-description">スポーツで集まり、繋がり、浜松がもっと好きになる。<br>若者が活躍できる「心の居場所」をつくります。</p>
-                
+                <p class="hero-description">スポーツを通して人と繋がり、浜松の自然・文化・食などの魅力に触れながら
+                    「浜松がもっと好きになる」「心温まる居場所」をつくる。</p>
+
                 <div style="margin-top: 40px;">
                     <a href="activities.html" class="cta-button">
                         活動内容を見る <i class="fa-solid fa-arrow-right" style="margin-left: 10px;"></i>
@@ -43,8 +58,10 @@
             <h2>こんな気持ち、ありませんか？</h2>
             <div class="emphasis-box">
                 <ul style="list-style: none; padding: 0;">
-                    <li style="margin-bottom: 10px;"><i class="fa-solid fa-check" style="color:var(--primary-color);"></i> 社会人になって新しい友達ができにくい</li>
-                    <li style="margin-bottom: 10px;"><i class="fa-solid fa-check" style="color:var(--primary-color);"></i> 運動したいけど1人では始めづらい</li>
+                    <li style="margin-bottom: 10px;"><i class="fa-solid fa-check"
+                            style="color:var(--primary-color);"></i> 社会人になって新しい友達ができにくい</li>
+                    <li style="margin-bottom: 10px;"><i class="fa-solid fa-check"
+                            style="color:var(--primary-color);"></i> 運動したいけど1人では始めづらい</li>
                     <li><i class="fa-solid fa-check" style="color:var(--primary-color);"></i> 浜松の魅力を知らないまま過ごしている</li>
                 </ul>
                 <hr style="border:0; border-top:1px dashed #ddd; margin: 20px 0;">
@@ -54,7 +71,8 @@
             </div>
         </section>
 
-        <section id="features" class="content-block" style="background: linear-gradient(180deg, #FDFFFC 0%, #fff 100%);">
+        <section id="features" class="content-block"
+            style="background: linear-gradient(180deg, #FDFFFC 0%, #fff 100%);">
             <h2>3つの Value</h2>
             <div class="features-grid">
                 <div class="feature-card">
@@ -65,7 +83,9 @@
                 <div class="feature-card">
                     <i class="fa-solid fa-handshake-simple"></i>
                     <h3>人とのつながり</h3>
-                    <p>初めてでも安心できる雰囲気。<br>ウェルカム精神100％でお迎えします。</p>
+                    <p>人の温かさを感じられる。
+                        <br>みんなの帰ってこられる居場所を提供します。
+                    </p>
                 </div>
                 <div class="feature-card">
                     <i class="fa-solid fa-flask"></i>
@@ -74,16 +94,18 @@
                 </div>
             </div>
             <div style="text-align: center; margin-top: 50px;">
-                <a href="about.html" class="cta-button" style="background: #fff; color: var(--text-dark); border: 2px solid #eee;">
+                <a href="about.html" class="cta-button"
+                    style="background: #fff; color: var(--text-dark); border: 2px solid #eee;">
                     もっと詳しく知る
                 </a>
             </div>
         </section>
-        
+
         <section id="cooperation" class="content-block" style="text-align: center;">
             <h2>Cooperation</h2>
-            <p style="color: #999; font-size: 0.9rem; margin-top: -40px; margin-bottom: 40px; letter-spacing: 0.1em;">協力団体</p>
-            
+            <p style="color: #999; font-size: 0.9rem; margin-top: -40px; margin-bottom: 40px; letter-spacing: 0.1em;">
+                協力団体</p>
+
             <div>
                 <a href="https://www.instagram.com/shizuoka_connect/" target="_blank" class="partner-item">
                     <img src="ロゴ.png" alt="しずおかコネクト ロゴ">
@@ -99,4 +121,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
