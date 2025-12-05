@@ -4,10 +4,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@600;800&display=swap');
 
 :root {
-    /* カラーパレット：青（信頼・海）× 水色（爽快感） */
+    /* カラーパレット */
     --primary-color: #0066CC;
     --secondary-color: #4CC9F0;
     --accent-color: #F72585;
+    --third-color:  #4cf0d7;
     
     /* グラデーション */
     --primary-gradient: linear-gradient(135deg, #0066CC 0%, #4361EE 100%); 
@@ -27,12 +28,14 @@
 }
 
 /* -------------------------------------------------------------------
-   Base Styles (基本設定)
+   【重要】全文字サイズ可変システム (Fluid Typography)
 ------------------------------------------------------------------- */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+html {
+    /* ルートの文字サイズ自体を画面幅に合わせて伸縮させる
+       最小12px(スマホ) 〜 最大16px(PC) 
+       これによりrem単位を使っている全要素が連動して変化します
+    */
+    font-size: clamp(12px, 2vw, 16px);
 }
 
 body {
@@ -40,54 +43,62 @@ body {
     color: var(--text-dark);
     line-height: 1.8;
     background-color: var(--white);
-    padding-top: 80px; /* ヘッダーの高さ分空ける */
+    padding-top: 80px; 
+    -webkit-text-size-adjust: 100%;
+    font-feature-settings: "palt";
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-img {
-    max-width: 100%;
-    height: auto;
-    vertical-align: bottom;
+/* 単語の途中での改行を防ぐ設定（全要素共通） */
+h1, h2, h3, h4, h5, h6, p, li, a, dt, dd, div, span {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
 
 /* -------------------------------------------------------------------
-   Header & Navigation (ヘッダー設定)
+   Header & Navigation
 ------------------------------------------------------------------- */
 header {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
+    top: 0; left: 0;
+    width: 100%; 
     height: 80px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 5%;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     box-shadow: 0 2px 20px rgba(0,0,0,0.05);
-    z-index: 1000;
+    z-index: 9999;
+    box-sizing: border-box;
+}
+
+header h1 {
+    flex-shrink: 0;
+    margin-right: 20px;
 }
 
 header h1 a {
     font-family: 'Poppins', sans-serif;
     font-weight: 800;
-    font-size: 1.5rem;
+    /* ロゴも画面幅に応じて可変 */
+    font-size: clamp(1.2rem, 4vw, 1.5rem);
     letter-spacing: 0.05em;
+    display: flex; align-items: center;
+    text-decoration: none;
+    color: var(--text-dark); 
+    white-space: nowrap;
 }
 
 header h1 span {
     color: var(--primary-color);
 }
 
+/* PC用ナビゲーション */
 #global-nav ul {
     display: flex;
     list-style: none;
-    gap: 30px;
+    gap: 20px; 
 }
 
 #global-nav a {
@@ -95,70 +106,54 @@ header h1 span {
     font-size: 0.9rem;
     position: relative;
     transition: color 0.3s;
+    cursor: pointer;
+    white-space: nowrap;
 }
 
-#global-nav a:hover {
-    color: var(--primary-color);
-}
-
+#global-nav a:hover { color: var(--primary-color); }
 #global-nav a::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0%;
-    height: 2px;
+    content: ''; position: absolute;
+    bottom: -5px; left: 0;
+    width: 0%; height: 2px;
     background: var(--primary-gradient);
     transition: width 0.3s;
 }
-
-#global-nav a:hover::after {
-    width: 100%;
-}
+#global-nav a:hover::after { width: 100%; }
 
 /* -------------------------------------------------------------------
-   Hamburger Menu (Mobile)
+   Hamburger Menu (Tablet/Mobile)
 ------------------------------------------------------------------- */
 .hamburger-btn {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    width: 30px;
-    height: 20px;
-    position: relative;
-    z-index: 1100;
+    display: none; 
+    background: none; border: none; cursor: pointer;
+    width: 50px; height: 50px; padding: 10px; 
+    position: relative; z-index: 10000; 
 }
 
 .hamburger-btn span {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 2px;
+    position: absolute; left: 10px; 
+    width: 30px; height: 2px; 
     background-color: var(--text-dark);
-    transition: all 0.3s;
+    transition: all 0.3s; display: block; 
 }
+.hamburger-btn span:nth-of-type(1) { top: 15px; }
+.hamburger-btn span:nth-of-type(2) { top: 24px; }
+.hamburger-btn span:nth-of-type(3) { bottom: 15px; }
 
-.hamburger-btn span:nth-of-type(1) { top: 0; }
-.hamburger-btn span:nth-of-type(2) { top: 50%; transform: translateY(-50%); }
-.hamburger-btn span:nth-of-type(3) { bottom: 0; }
-
-.hamburger-btn.is-open span:nth-of-type(1) { top: 50%; transform: translateY(-50%) rotate(45deg); }
+.hamburger-btn.is-open span:nth-of-type(1) { top: 24px; transform: rotate(45deg); }
 .hamburger-btn.is-open span:nth-of-type(2) { opacity: 0; }
-.hamburger-btn.is-open span:nth-of-type(3) { bottom: 50%; transform: translateY(50%) rotate(-45deg); }
+.hamburger-btn.is-open span:nth-of-type(3) { bottom: 24px; transform: rotate(-45deg); }
 
-@media (max-width: 768px) {
+/* 1024px以下でハンバーガーメニューに切り替え */
+@media (max-width: 1024px) {
     .hamburger-btn { display: block; }
     #global-nav {
-        position: fixed;
-        top: 0; right: -100%;
+        position: fixed; top: 0; right: -100%; 
         width: 100%; height: 100vh;
         background: rgba(255,255,255,0.98);
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        display: flex; justify-content: center; align-items: center;
         transition: right 0.4s ease;
-        z-index: 1000;
+        z-index: 9998; 
     }
     #global-nav.is-open { right: 0; }
     #global-nav ul { flex-direction: column; text-align: center; gap: 40px; }
@@ -166,50 +161,40 @@ header h1 span {
 }
 
 /* -------------------------------------------------------------------
-   Hero Section (トップ画エリア)
+   Hero Section
 ------------------------------------------------------------------- */
 .hero {
     position: relative;
-    height: 90vh;
-    min-height: 600px;
-    display: flex;
-    align-items: center;
+    height: 90vh; min-height: 600px;
+    display: flex; align-items: center;
     padding: 0 10%;
     background: var(--bg-color);
     overflow: hidden;
+    z-index: 1; 
 }
-
 .hero::before {
-    content: '';
-    position: absolute;
+    content: ''; position: absolute;
     top: -40%; left: -10%;
     width: 700px; height: 700px;
     background: radial-gradient(circle, rgba(0, 102, 204, 0.15) 0%, rgba(255,255,255,0) 70%);
-    border-radius: 50%;
-    z-index: 0;
+    border-radius: 50%; z-index: -1; 
     animation: floatBubble 12s infinite alternate;
 }
-
 .hero::after {
-    content: '';
-    position: absolute;
+    content: ''; position: absolute;
     bottom: -10%; right: -10%;
     width: 500px; height: 500px;
     background: radial-gradient(circle, rgba(76, 201, 240, 0.15) 0%, rgba(255,255,255,0) 70%);
-    border-radius: 50%;
-    z-index: 0;
+    border-radius: 50%; z-index: -1; 
     animation: floatBubble 15s infinite alternate-reverse;
 }
-
 @keyframes floatBubble {
     0% { transform: translate(0, 0) scale(1); }
     100% { transform: translate(30px, 50px) scale(1.1); }
 }
 
 .hero-content {
-    position: relative;
-    z-index: 1;
-    max-width: 600px;
+    position: relative; z-index: 2; max-width: 600px;
 }
 
 .hero-subtitle {
@@ -219,102 +204,112 @@ header h1 span {
     letter-spacing: 0.1em;
     margin-bottom: 20px;
     text-transform: uppercase;
+    font-size: clamp(0.8rem, 3vw, 1rem);
 }
 
 .hero h2 {
-    font-size: 3.5rem;
     font-weight: 900;
     line-height: 1.2;
     margin-bottom: 30px;
     font-family: 'Montserrat', sans-serif;
+    /* タイトルの可変サイズ設定 */
+    font-size: clamp(1.8rem, 6vw, 3.5rem);
+    word-break: keep-all;
 }
 
 .text-gradient {
     background: var(--primary-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    display: inline-block;
 }
 
 .hero-description {
-    font-size: 1.1rem;
     color: var(--text-gray);
     margin-bottom: 40px;
+    /* 本文の可変サイズ設定 */
+    font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+    word-break: keep-all;
 }
 
 /* -------------------------------------------------------------------
-   Components (共通パーツ)
+   Components (コンテナ・ボックス内の文字可変設定)
 ------------------------------------------------------------------- */
 .content-block {
     padding: 100px 10%;
+    position: relative;
+    z-index: 2;
 }
 
 .content-block h2 {
-    font-size: 2.5rem;
+    /* 見出し: スマホで1.4remまで縮小 */
+    font-size: clamp(1.4rem, 5vw, 2.5rem);
     text-align: center;
     margin-bottom: 60px;
     font-family: 'Montserrat', sans-serif;
     color: var(--primary-color);
+    word-break: keep-all;
+    line-height: 1.4;
 }
 
-.section-bg {
-    background-color: var(--bg-color);
-}
+.section-bg { background-color: var(--bg-color); }
 
 .cta-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    display: inline-flex; align-items: center; justify-content: center;
     padding: 18px 40px;
     background: var(--primary-gradient);
-    color: white;
-    font-weight: 700;
+    color: white; font-weight: 700;
     border-radius: 50px;
     box-shadow: 0 10px 20px rgba(0, 102, 204, 0.3);
     transition: transform 0.3s, box-shadow 0.3s;
+    font-size: clamp(0.9rem, 3.5vw, 1rem);
+    position: relative; z-index: 5;
 }
-
 .cta-button:hover {
     transform: translateY(-3px);
     box-shadow: 0 15px 30px rgba(0, 102, 204, 0.4);
 }
-
 .cta-button-insta {
     background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
     box-shadow: 0 10px 20px rgba(220, 39, 67, 0.3);
 }
 
-/* Features Grid */
+/* --- Features Grid (3つのValueカード) --- */
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 40px;
 }
 
 .feature-card {
-    background: white;
-    padding: 40px;
+    background: white; padding: 40px;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-card);
     transition: transform 0.3s;
     text-align: center;
 }
-
-.feature-card:hover {
-    transform: translateY(-10px);
-}
+.feature-card:hover { transform: translateY(-10px); }
 
 .feature-card i {
-    font-size: 3rem;
+    /* アイコンサイズも画面幅連動 */
+    font-size: clamp(2.5rem, 8vw, 3rem);
     margin-bottom: 20px;
     color: var(--secondary-color);
 }
 
 .feature-card h3 {
     margin-bottom: 15px;
-    font-size: 1.3rem;
+    /* カード内の見出しを可変に */
+    font-size: clamp(1.1rem, 5vw, 1.3rem);
 }
 
-/* Emphasis Box (箇条書きエリア) */
+.feature-card p {
+    /* カード内の本文を可変に（最小0.8remまで縮小） */
+    font-size: clamp(0.8rem, 4vw, 1rem);
+    line-height: 1.7;
+}
+
+/* --- Emphasis Box (こんな気持ち、ありませんか？のボックス) --- */
 .emphasis-box {
     background: white;
     padding: 40px;
@@ -325,28 +320,48 @@ header h1 span {
     border-left: 5px solid var(--primary-color);
 }
 
-/* About Message */
+/* リスト(li)や段落(p)の文字サイズを画面幅に強く連動させる */
+.emphasis-box p, 
+.emphasis-box ul, 
+.emphasis-box li {
+    /* 最小0.85remまで縮小し、スマホで改行を防ぐ */
+    font-size: clamp(0.85rem, 4vw, 1.1rem);
+    line-height: 1.8;
+}
+
+/* --- Message Section --- */
 .message-container {
-    display: flex;
-    gap: 40px;
-    align-items: center;
+    display: flex; gap: 40px; align-items: center;
 }
-
 .message-image {
-    flex: 1;
-    border-radius: var(--radius-md);
-    overflow: hidden;
+    flex: 1; border-radius: var(--radius-md); overflow: hidden;
+}
+.message-image img { width: 100%; height: auto; object-fit: cover; }
+.message-content { flex: 1.5; }
+
+.message-content h3 {
+    font-size: clamp(1.2rem, 5vw, 1.5rem);
+}
+.message-content p {
+    font-size: clamp(0.85rem, 3.5vw, 1rem);
 }
 
-.message-image img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
+/* --- Overview Table --- */
+.overview-table { max-width: 800px; margin: 0 auto; }
+.overview-table dl {
+    display: flex; border-bottom: 1px solid #ddd; padding: 15px 0;
+}
+.overview-table dt {
+    width: 30%; font-weight: bold; color: var(--primary-color);
+    /* テーブル内の文字も可変に */
+    font-size: clamp(0.85rem, 3.5vw, 1rem);
+}
+.overview-table dd {
+    width: 70%;
+    font-size: clamp(0.85rem, 3.5vw, 1rem);
 }
 
-.message-content {
-    flex: 1.5;
-}
+/* Activity Gallery & Others */
 
 /* Activity Gallery */
 .activity-gallery {
@@ -357,49 +372,241 @@ header h1 span {
     flex-wrap: wrap;
 }
 
+/* 【修正】ギャラリーの枠の設定 */
 .gallery-item {
-    width: 300px;
+    width: 300px;         /* 幅は300px */
+    aspect-ratio: 1 / 1;  /* 【重要】高さを幅と同じにして「正方形」にする */
     border-radius: var(--radius-md);
     overflow: hidden;
     box-shadow: var(--shadow-card);
+    display: flex;        /* 画像の下に微妙な隙間ができるのを防ぐ */
 }
 
-.overview-table {
-    max-width: 800px;
-    margin: 0 auto;
+/* 【追加】ギャラリー内の画像専用の設定 */
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    /* 【最重要】枠に合わせて画像をリサイズし、はみ出た部分をトリミングする */
+    object-fit: cover;
+    /* 画像の中心を基準に表示する */
+    object-position: center;
 }
-.overview-table dl {
-    display: flex;
-    border-bottom: 1px solid #ddd;
-    padding: 15px 0;
-}
-.overview-table dt {
-    width: 30%;
-    font-weight: bold;
-    color: var(--primary-color);
-}
-.overview-table dd {
-    width: 70%;
-}
-
-/* Partner Item */
 .partner-item {
-    display: inline-block;
-    padding: 20px;
-    border: 1px solid #eee;
-    border-radius: var(--radius-md);
+    display: inline-block; padding: 20px;
+    border: 1px solid #eee; border-radius: var(--radius-md);
     transition: 0.3s;
 }
-.partner-item:hover {
-    border-color: var(--primary-color);
+.partner-item:hover { border-color: var(--primary-color); }
+.partner-item img { height: 60px; margin-bottom: 10px; }
+
+/* =========================================
+   スマホ・タブレット表示時の追加調整 (1024px以下)
+   ======================================== */
+@media screen and (max-width: 1024px) {
+    /* 改行タグの無効化 */
+    br { display: none; }
+    
+    /* コンテナ余白の調整 */
+    .content-block { padding: 60px 20px; }
+    .message-container { flex-direction: column; }
+    .emphasis-box { padding: 30px 20px; }
+    
+    /* カード内の文字サイズ微調整（さらに確実に小さくする） */
+    .feature-card p,
+    .emphasis-box p,
+    .emphasis-box li {
+        font-size: clamp(0.8rem, 4vw, 1rem);
+    }
+    /* --- style.css の一番下の @media 内に追記 --- */
+
+@media screen and (max-width: 768px) {
+    
+    /* （ここには以前追加したコードがあります） */
+
+    /* --- ここから追記 --- */
+
+    /* ギャラリーのスマホ調整 */
+    .activity-gallery {
+        gap: 15px; /* スマホでは間隔を少し狭く */
+    }
+
+    .gallery-item {
+        /* 幅を画面に合わせて伸縮させる（ただし最大300pxまで） */
+        width: 100%;
+        max-width: 300px;
+        /* スマホでも正方形を維持 */
+        aspect-ratio: 1 / 1;
+        /* 中央寄せ */
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* --- ここまで追記 --- */
 }
-.partner-item img {
-    height: 60px;
-    margin-bottom: 10px;
+}
+/* --- style.css の一番下に追加 --- */
+
+/* 文節（言葉のまとまり）を崩さないためのクラス */
+.ib {
+    display: inline-block; /* ブロックとして扱う */
+}
+/* =========================================
+   リスト（チェックマーク）のレイアウト修正
+   ========================================= */
+
+/* 各リスト項目の設定 */
+.emphasis-box li {
+    position: relative;       /* アイコンを固定するための基準点 */
+    padding-left: 2rem;       /* 左側にアイコンが入るスペースを空ける */
+    margin-bottom: 15px !important; /* 行間を少し広げる */
+    line-height: 1.6;         /* 文章の行間を読みやすく */
 }
 
-@media (max-width: 768px) {
-    .hero h2 { font-size: 2.2rem; }
-    .message-container { flex-direction: column; }
-    .content-block { padding: 60px 5%; }
+/* チェックマークアイコンの設定 */
+.emphasis-box li i {
+    position: absolute;       /* 文章の流れから切り離して配置 */
+    left: 0;                  /* 左端に固定 */
+    top: 0.2em;               /* 1行目の文字の高さに合わせて微調整 */
+    width: 1.5rem;            /* アイコンエリアの幅 */
+    text-align: center;       /* アイコンをエリアの中央に */
+}
+/* =========================================
+   大きなSNSリンクボタンのデザイン（横並び・アイコン上）
+   ========================================= */
+
+/* ボタンを囲むエリア */
+.sns-links-container {
+    display: flex;
+    justify-content: center; /* 中央寄せ */
+    gap: 30px;               /* ボタン同士の間隔 */
+    flex-wrap: wrap;         /* 画面が極端に狭い場合は折り返す */
+    margin-top: 20px;
+}
+
+/* ボタン共通設定 */
+.sns-card {
+    display: flex;
+    flex-direction: column;  /* 縦積みにする（アイコンが上、文字が下） */
+    align-items: center;
+    justify-content: center;
+    
+    width: 160px;            /* 正方形に近い形にするための幅 */
+    height: 160px;           /* 高さ */
+    
+    color: white;
+    text-decoration: none;
+    border-radius: 24px;     /* 丸みを帯びさせる */
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.sns-card:hover {
+    transform: translateY(-5px); /* ホバー時に浮き上がる */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+}
+
+/* アイコン（大きく表示） */
+.sns-card i {
+    font-size: 4rem;        /* アイコンサイズを大きく */
+    margin-bottom: 15px;    /* 文字との間隔 */
+}
+
+/* 文字（太く表示） */
+.sns-card span {
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+}
+
+/* --- 色の設定 --- */
+
+/* LINEの色 */
+.line-card {
+    background-color: #06C755;
+    box-shadow: 0 10px 25px rgba(6, 199, 85, 0.4);
+}
+
+/* Instagramの色（グラデーション） */
+.insta-card {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    box-shadow: 0 10px 25px rgba(220, 39, 67, 0.4);
+}
+
+/* スマホ表示時の調整 */
+@media screen and (max-width: 768px) {
+    .sns-links-container {
+        gap: 20px; /* 間隔を少し詰める */
+    }
+    
+    .sns-card {
+        width: 140px;  /* スマホでは少し小さくして画面に収める */
+        height: 140px;
+    }
+    
+    .sns-card i {
+        font-size: 3.5rem; /* アイコンも少し調整 */
+    }
+}
+/* =========================================
+   フッターの修正（アイコンサイズ拡大版）
+   ========================================= */
+
+footer {
+    padding: 50px 20px; /* 上下の余白も少し広げました */
+    color: #888;
+    background-color: #fff;
+}
+
+.footer-content {
+    display: flex;           
+    justify-content: center; 
+    align-items: center;     
+    gap: 30px;               /* 文字とアイコンの間隔を少し広げました */
+    flex-wrap: wrap;         
+}
+
+/* 団体名（コピーライト）の文字サイズ */
+.copyright {
+    font-size: 0.9rem;       /* バランスを見て調整 */
+}
+
+.footer-sns-icons {
+    display: flex;
+    gap: 25px;               /* アイコン同士の間隔を広げました */
+}
+
+/* アイコン共通設定 */
+.footer-sns-icons a {
+    font-size: 2.2rem;       /* 【変更】ここを大きくしました（約35px相当） */
+    color: #bbb;             
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    line-height: 1;          /* 高さを揃える */
+}
+
+/* ホバー時の動きと色 */
+.footer-sns-icons a:hover {
+    transform: scale(1.15);  /* ホバー時の拡大率も少しアップ */
+}
+
+.icon-line:hover {
+    color: #06C755;          
+}
+
+.icon-insta:hover {
+    color: #E1306C;          
+}
+
+/* スマホ表示時の微調整 */
+@media screen and (max-width: 768px) {
+    .footer-content {
+        flex-direction: column-reverse; 
+        gap: 20px;
+    }
+    
+    /* スマホではアイコンをさらに押しやすく少し大きくしてもOK */
+    .footer-sns-icons a {
+        font-size: 2.5rem; 
+    }
 }
