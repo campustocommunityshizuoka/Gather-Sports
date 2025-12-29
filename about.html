@@ -1,184 +1,217 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  
-  <title>活動内容・開発実績 | しずおかコネクト</title>
-  <meta name="description" content="しずおかコネクトの活動実績やプロジェクトをご紹介。プログラミング教室の開催、Webシステム・アプリ開発の実績、地域イベントの企画運営など、学生と地域の連携事例をご覧いただけます。" />
-  <meta name="keywords" content="静岡,活動内容,プロジェクト,開発実績,プログラミング教室,イベント,実績" />
-  
-  <meta property="og:title" content="活動内容・開発実績 | しずおかコネクト" />
-  <meta property="og:description" content="学生によるシステム開発実績や地域活動のレポートはこちら。" />
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://shizuoka-connect.com/about.html" />
-  <meta property="og:image" content="https://shizuoka-connect.com/assets/logo.png" />
-  <meta property="og:site_name" content="しずおかコネクト" />
 
-  <link rel="icon" href="assets/logo.png" type="image/png">
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>私たちについて - Gather Sports</title>
+    <link rel="icon" href="image/gatherlogo.jpg">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
-  <header>
-    <div class="container header-flex">
-      <h1>
-        <a href="index.html" class="site-title">
-          <img src="assets/logo.png" alt="しずおかコネクト ロゴ" class="header-logo">
-          <div class="title-text">
-            <span class="sub-title"></span>
-            地域と学生をつなぐ会 しずおかコネクト
-          </div>
+
+     <header>
+    <h1>
+        <a href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+            
+            <img src="image/gatherlogo.jpg" alt="Gather Sports Logo" style="width: 50px; height: 50px; border-radius: 12px; object-fit: cover;">
+            
+            <span>Gather <span style="color: var(--primary-color);">Sports</span></span>
         </a>
-      </h1>
-      <nav class="desktop-nav">
+    </h1>
+
+    <button id="hamburger-btn" class="hamburger-btn" aria-label="メニューを開閉する">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <nav id="global-nav">
         <ul>
-          <li><a href="index.html">トップ</a></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle">私たちについて</a>
-            <ul class="dropdown-menu">
-              <li><a href="about.html">活動内容</a></li>
-              <li><a href="members.html">メンバー紹介</a></li>
-              <li><a href="advisors.html">特別顧問</a></li>
-              <li><a href="news.html">プレスリリース</a></li>
-            </ul>
-          </li>
-         <li class="dropdown">
-            <a href="#" class="dropdown-toggle">学生の方</a>
-            <ul class="dropdown-menu">
-              <li><a href="service.html">自分を登録する</a></li>
-              <li><a href="partners.html">企業・団体を探す</a></li>
-            </ul>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle">企業・団体の方</a>
-            <ul class="dropdown-menu">
-              <li><a href="for-companies.html">ご提供できること</a></li>
-            </ul>
-          </li>
-          <li><a href="contact.html">お問い合わせ</a></li>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+            <li><a href="activities.html">ACTIVITIES</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
         </ul>
-      </nav>
-      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
-    </div>
-  </header>
-  <nav class="nav-menu" id="nav-menu">
-    <ul>
-      <li><a href="index.html">トップ</a></li>
-      <li class="dropdown-sp">
-        <a href="#" class="dropdown-toggle-sp">私たちについて</a>
-        <ul class="dropdown-menu-sp">
-          <li><a href="about.html">- 活動内容</a></li>
-          <li><a href="members.html">- メンバー紹介</a></li>
-          <li><a href="advisors.html">- 特別顧問</a></li>
-          <li><a href="news.html">- プレスリリース</a></li>
-        </ul>
-      </li>
-      <li class="dropdown-sp">
-        <a href="#" class="dropdown-toggle-sp">学生の方</a>
-        <ul class="dropdown-menu-sp">
-          <li><a href="service.html">- 自分を登録する</a></li>
-          <li><a href="partners.html">- 企業・団体を探す</a></li>
-        </ul>
-      </li>
-      <li class="dropdown-sp">
-        <a href="#" class="dropdown-toggle-sp">企業・団体の方</a>
-        <ul class="dropdown-menu-sp">
-          <li><a href="for-companies.html">- ご提供できること</a></li>
-        </ul>
-      </li>
-      <li><a href="contact.html">お問い合わせ</a></li>
-    </ul>
-  </nav>
+    </nav>
+</header>
 
-  <div class="content-wrapper">
-    <section class="page-hero">
-        <div class="hero-image-segment segment-1"></div>
-        <div class="hero-image-segment segment-2"></div>
-        <div class="hero-image-segment segment-3"></div>
-        <div class="hero-text"><h2>活動内容</h2></div>
-    </section>
+    <main>
+        <section class="content-block">
+            <h2>Philosophy</h2>
+            <p style="text-align: center; font-size: 1.2rem; font-weight: bold;">
+                <span class="ib">“人”と”浜松の魅力”を</span>
+                <span class="ib">スポーツで繋ぐ</span>
+            </p>
+            <p style="text-align: center; margin-top: 20px;">
+                <span class="ib">スポーツを通して人と繋がり、</span>
+                <span class="ib">浜松の自然・文化・食などの</span>
+                <span class="ib">魅力に触れながら</span><br>
+                <span class="ib">「浜松がもっと好きになる」</span>
+                <span class="ib">「若者が活躍できる場」をつくる。</span>
+            </p>
+        </section>
 
-    <main class="container page-content">
-      
-      <section class="about-intro">
-         <h2 class="section-title">活動内容と実績</h2>
-         <p class="intro-text">
-           しずおかコネクトが現在企画しているプロジェクト、活動・開発実績、また協力企業・団体の皆様や様々な活動の実績を掲載しています。
-         </p>
-      </section>
+        <section class="content-block section-bg">
+            <div class="features-grid">
+                <div style="background: white; padding: 30px; border-radius: 20px; box-shadow: var(--shadow-card);">
+                    <h3 style="color: var(--primary-color);"><i class="fa-solid fa-rainbow"></i> Vision</h3>
+                    <p style="font-weight: bold; margin-bottom: 10px;">
+                        心の居場所となるコミュニティ
+                    </p>
+                    <p>
+                        <span class="ib">スポーツで集まり・繋がり、</span>
+                        <span class="ib">浜松の魅力に触れられる</span>
+                        <span class="ib">“心の居場所”を目指します。</span>
+                    </p>
+                </div>
+                <div style="background: white; padding: 30px; border-radius: 20px; box-shadow: var(--shadow-card);">
+                    <h3 style="color: var(--secondary-color);"><i class="fa-solid fa-rocket"></i> Mission</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><i class="fa-solid fa-caret-right"></i> はじめの一歩の応援団</li>
+                        <li><i class="fa-solid fa-caret-right"></i> 自然に友達ができる場</li>
+                        <li><i class="fa-solid fa-caret-right"></i> スポーツで浜松再発見</li>
+                        <li><i class="fa-solid fa-caret-right"></i> 浜松を元気にする</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-      <section class="projects-section">
-        <h2 class="section-title" style="margin-top:4rem;">活動プロジェクト</h2>
-        <p style="text-align:center; margin-bottom:2rem;">教室開催やイベント運営など、日々の活動一覧です。</p>
-        <div id="project-list-area" class="project-list-grid"></div>
-      </section>
+        <section class="content-block">
+            <h2>Message</h2>
+            
+            <div class="message-container emphasis-box" style="border-left-color: var(--secondary-color); margin-bottom: 60px;">
+                <div class="message-image">
+                    <img src="image/tokunaga.jpg" alt="人生楽しんだもん勝ち">
+                </div>
+                <div class="message-content">
+                    <h3 style="margin-bottom: 20px;">
+                        <span class="ib">“Playful mindset”</span>
+                        <span class="ib">大人こそ、遊ぼう。</span>
+                    </h3>
+                    <p>
+                        <span class="ib">「浜松の若者が、スポーツを通じて</span>
+                        <span class="ib">人の温かさを感じられる居場所を</span>
+                        <span class="ib">つくりたい」</span><br>
+                        <span class="ib">そんな想いから</span>
+                        <span class="ib">Gather Sportsは</span>
+                        <span class="ib">始まりました。</span></p>
+                    <p>
+                        <span class="ib">地方では、まだまだ</span>
+                        <span class="ib">“コミュニティ”の存在が</span>
+                        <span class="ib">身近ではありません。</span><br>
+                        <span class="ib">しかし、スポーツという</span>
+                        <span class="ib">“遊び”があれば、</span>
+                        <span class="ib">人は自然につながり、笑い、</span>
+                        <span class="ib">そして心がほどける。</span></p>
+                    <p>
+                        <span class="ib">ここは、誰でも帰ってこられる場所。</span><br>
+                        <span class="ib">失敗も挑戦も面白がりながら、</span>
+                        <span class="ib">人生が豊かになる時間を</span>
+                        <span class="ib">一緒に作りましょう。</span></p>
+                    <div style="text-align: right; margin-top: 20px;">
+                        <span style="font-weight: bold; font-size: 1.1em;">徳永 悠大</span><br>
+                        <span style="font-size: 0.9em; color: #666;">Gather Sports 代表</span>
+                    </div>
+                </div>
+            </div>
 
-      <section class="portfolio-section">
-        <h2 class="section-title">開発実績</h2>
-        <p style="text-align:center; margin-bottom:2rem;">
-            これまでに開発・リリースしたWebサイトやアプリケーションのご紹介です。
-        </p>
-        <div id="portfolio-grid" class="portfolio-grid">
-            <p style="text-align:center;">読み込み中...</p>
-        </div>
-      </section>
+            <div class="message-container emphasis-box" style="border-left-color: var(--primary-color); margin-bottom: 60px;">
+                <div class="message-image">
+                    <img src="image/yamamoto.jpg" alt="副代表 山本隼人">
+                </div>
+                <div class="message-content">
+                    <h3 style="margin-bottom: 20px;">
+                        心と身体を豊かに。
+                    </h3>
+                    <p>
+                        <span class="ib">汗をかく事はとてもいい事。</span><br>
+                        <span class="ib">私たちの心と身体を</span>
+                        <span class="ib">豊かにしてくれます。</span><br>
+                        <span class="ib">ましてや、仲間がいれば</span>
+                        <span class="ib">尚更楽しい所へいけます！</span></p>
+                    <p>
+                        <span class="ib">楽しい事、笑う事が大好きです！</span><br>
+                        <span class="ib">僕はとてもシャイですが、</span>
+                        <span class="ib">仲良くなる為には一緒に</span>
+                        <span class="ib">スポーツをしてしまうのが</span>
+                        <span class="ib">手っ取り早い！笑</span></p>
+                    <p>
+                        <span class="ib">とても品の高い人達に囲まれて</span>
+                        <span class="ib">いつも勉強になります。</span><br>
+                        <span class="ib">楽しくやりましょう！</span>
+                        <span class="ib">よろしくお願いします！</span></p>
+                    <div style="text-align: right; margin-top: 20px;">
+                        <span style="font-weight: bold; font-size: 1.1em;">山本 隼人</span><br>
+                        <span style="font-size: 0.9em; color: #666;">Gather Sports 副代表 / SUP選手</span>
+                    </div>
+                </div>
+            </div>
 
-      <section class="map-section">
-        <h2 class="section-title" style="margin-top:4rem;">活動エリア・協力企業・団体</h2>
-        <p style="text-align:center; margin-bottom:1rem;">
-          浜松市を中心に、様々なパートナーと連携して活動しています。
-        </p>
-        
-        <div class="map-region-selector" style="text-align:center; margin-bottom: 1.5rem;">
-            <p style="font-weight:bold; margin-bottom:10px;">エリアを選択:</p>
-            <div class="region-buttons-container">
-                <button class="region-btn active" data-region="all">全体</button>
-                <button class="region-btn" data-region="chuo">中央区</button>
-                <button class="region-btn" data-region="hamana">浜名区</button>
-                <button class="region-btn" data-region="tenryu">天竜区</button>
+            <div class="message-container emphasis-box" style="border-left-color: var(--third-color);">
+                <div class="message-image">
+                    <img src="image/shigematsu.jpg" alt="企画運営　重松">
+                </div>
+                <div class="message-content">
+                    <h3 style="margin-bottom: 20px;">
+                        <span class="ib">「つながりから、</span>
+                        <span class="ib">挑戦が生まれる場所を</span>
+                        <span class="ib">つくりたい」</span>
+                    </h3>
+                    <p>
+                        <span class="ib">高校生3年の僕は、</span>
+                        <span class="ib">いろいろなコミュニティに参加してきました。</span>
+                        <span class="ib">そこには、年齢も仕事も</span>
+                        <span class="ib">全く違う人たちがいて、</span>
+                        <span class="ib">毎回新しい学びがありました。</span>
+                        <span class="ib">その経験を通して視野が広がり、</span>
+                        <span class="ib">もっと挑戦してみたいという気持ちが</span>
+                        <span class="ib">強くなりました。</span>
+                    <p>
+                        <span class="ib">このコミュニティは、</span>
+                        <span class="ib">若い世代が中心になる場所です。</span>
+                        <span class="ib">そしてここには、</span>
+                        <span class="ib">これから何かを始めたい人や</span>
+                        <span class="ib">挑戦したい人もいれば、</span>
+                        <span class="ib">ただ気軽にスポーツを</span>
+                        <span class="ib">楽しみに来る人もいます。</span>
+                        <span class="ib">そのどちらも大歓迎です。</span>
+                    <p>
+                        <span class="ib">僕自身もそのつながりを</span>
+                        <span class="ib">求めているし、一緒に頑張りたい。</span>
+                    </p>
+                    <p>
+                        <span class="ib">ここで生まれる縁が、</span>
+                        <span class="ib">誰かの背中を押すきっかけになるような</span>
+                        <span class="ib">場をつくっていきたいです。</span>
+                        <span class="ib">心と身体を豊かに。</span>
+                    </p>
+                    <div style="text-align: right; margin-top: 20px;">
+                        <span style="font-weight: bold; font-size: 1.1em;">重松　大智</span><br>
+                        <span style="font-size: 0.9em; color: #666;">Gather Sports 企画運営チーム</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <span class="copyright">&copy; 2025 Gather Sports Hamamatsu</span>
+            
+            <div class="footer-sns-icons">
+                <a href="https://lin.ee/gtzthAs" target="_blank" class="icon-line" aria-label="公式LINE">
+                    <i class="fa-brands fa-line"></i>
+                </a>
+                
+                <a href="https://www.instagram.com/gather__sports?igsh=eXY0dXNxN3NhbHA5" target="_blank" class="icon-insta" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
             </div>
         </div>
-
-        <div class="map-filters">
-            <button class="map-filter-btn active" data-filter="all">すべて</button>
-            <button class="map-filter-btn" data-filter="dev"><i class="fas fa-laptop-code"></i> 開発</button>
-            <button class="map-filter-btn" data-filter="edu"><i class="fas fa-chalkboard-teacher"></i> 教室</button>
-            <button class="map-filter-btn" data-filter="com"><i class="fas fa-users"></i> 交流</button>
-            <button class="map-filter-btn" data-filter="partner"><i class="far fa-building"></i> 協力企業・団体</button>
-        </div>
-
-        <div class="weather-map-container">
-          <div id="activity-map"></div>
-        </div>
-      </section>
-
-      <section class="cta-section">
-        <h2 style="color: #135a9e;">一緒に活動しませんか？</h2>
-        <a href="contact.html" class="btn">お問い合わせはこちら</a>
-      </section>
-
-    </main>
-    <footer>
-      <div class="container">
-        <div class="footer-content">
-          <p id="secret-door" style="cursor: pointer; user-select: none;">© 2025 地域と学生をつなぐ会 しずおかコネクト</p>
-          <div class="footer-links">
-            <a href="https://www.instagram.com/shizuoka_connect?igsh=OXMyazhjcWQ0aW8y" target="_blank" aria-label="Instagram">
-              <i class="fab fa-instagram"></i>
-            </a>
-            <a href="mailto:campustocommunityshizuoka@gmail.com" aria-label="Email">
-              <i class="fas fa-envelope"></i>
-            </a>
-          </div>
-        </div>
-      </div>
     </footer>
-  </div>
 
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script type="module" src="about-map.js"></script>
-  <script type="module" src="javascript.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
