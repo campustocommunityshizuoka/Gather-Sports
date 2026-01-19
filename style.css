@@ -73,12 +73,12 @@ header {
     box-sizing: border-box;
 }
 
-header h1 {
+header .site-branding {
     flex-shrink: 0;
     margin-right: 20px;
 }
 
-header h1 a {
+header .site-branding a {
     font-family: 'Poppins', sans-serif;
     font-weight: 800;
     /* ロゴも画面幅に応じて可変 */
@@ -90,7 +90,7 @@ header h1 a {
     white-space: nowrap;
 }
 
-header h1 span {
+header .site-branding a span {
     color: var(--primary-color);
 }
 
@@ -220,6 +220,7 @@ header h1 span {
 .text-gradient {
     background: var(--primary-gradient);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
 }
@@ -241,8 +242,7 @@ header h1 span {
     z-index: 2;
 }
 
-.content-block h2 {
-    /* 見出し: スマホで1.4remまで縮小 */
+.content-block h1 {
     font-size: clamp(1.4rem, 5vw, 2.5rem);
     text-align: center;
     margin-bottom: 60px;
